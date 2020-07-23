@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&family=Teko:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+body {
+	background: #6C7A89;
+}
+
+/*th, td {
+    border: 1px solid;
+}*/
+
+nav {
+	text-align: center;
+	/*background: blue;*/
+	/*margin: 20px 0;*/
+	/*padding: 10px;*/
+}
+
+nav a {
+	text-decoration: none;
+	background: #000000;
+	border-radius: 5px;
+	color: white;
+	padding: 10px;
+	text-transform: uppercase;
+	width: 50px;
+	height: 50px;
+}
+
+nav a:link {
+	text-decoration: none;
+}
+
+h2 {
+	font-family: Roboto;
+	font-size: 30px;
+	font-weight: 100;
+}
+.btn {
+	font-family: Roboto;
+	font-size: 15px;
+	text-transform: uppercase;
+	/*width: 170px;*/
+}
+.color {
+	background: #000000;
+}
+.button, a.button {
+	-webkit-appearance: button;
+	/*appearance: button;*/
+	text-decoration: none;
+	/*color: initial;*/
+	margin: 5px;
+	padding: 5px;
+	border: 1px solid black;
+	border-radius: 5px;
+	background-color: white;
+	color: #000000;
+	/*width: 110px;*/
+	/*white-space: normal;
+	word-wrap: break-word;*/
+}
+table, th, tr, td {
+	border-collapse: collapse;
+	border: 1px solid;
+	margin: 5px;
+	padding: 5px;
+}
+thead {
+	text-align: center;
+	/*background-color: #4CAF50;*/
+	font-weight: bold;
+}
+@media only screen and (max-width: 768px) {
+	div.MarkRyk {
+  		right: 50px;
+  	}
+}
+a.MarkRyk {
+	position: relative;
+	text-align: right;
+	font-family: 'Oswald', sans-serif;
+	font-size: 25px;
+	font-weight: 500;
+	color: black;
+	left: 650px;
+	top: 70px;
+	text-decoration: none;
+}

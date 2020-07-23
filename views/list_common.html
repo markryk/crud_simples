@@ -1,0 +1,151 @@
+<meta charset="utf-8">
+<?php
+	/**
+	*	@author: Anthony Jefferson;
+	*	@package: /view/list_common.php
+	*
+	* 	Este arquivo controla a criação e a visualização de dados em uma tabela. 
+	**/
+
+	//Testar se existe conteúdo!
+
+	//Se não existir, ele mostra a label 
+	if($table_content == false){
+		echo '<br><button class="btn btn-danger">';
+		echo ' <i class="fa fa-thumbs-down"></i>';
+		echo ' Não existem resultados';
+		echo '</button><br><br>';
+
+	//se existir conteúdo, ele cria a tabela
+	} else {
+?>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('[data-toggle="tooltip"]').tooltip();
+			});
+
+			//função para guardar o id no filtro
+			function delete_reg(filter){
+				$('#value').val(filter);
+			}
+		</script>
+
+		<style type="text/css">
+			.div_table {
+				overflow-x: auto;
+				overflow-y: auto;
+				width: auto;
+			}
+			td {
+				max-width: 130px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				border: 1px solid #cccccc;
+			}
+			.td_acoes {
+			    max-width: 150px;
+			}
+		</style>
+
+
+		<!-- Modal para excluir -->
+		<!--<div class="modal fade" id="'.$delete_destiny.'&filter='.($value[$filter]).'" tabindex="-1" role="dialog" -->
+		<div class="modal fade" id="apagarCampo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel"> Excluir???? </h5>
+		        
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        <h4> Esta operação não poderá ser desfeita. Tem certeza? </h4><br>
+		        <form action="<?=$GLOBALS['project_index'].$delete_destiny;?>" method="POST">
+		        	<input type="hidden" name="action" value="delete">
+		      		<input type="hidden" name="filter" id="value">
+		      		<button type="submit" class="btn btn-danger">
+		      			<span class="glyphicon glyphicon-ok-sign"></span>
+		      			Sim, Excluir.	
+		      		</button>
+
+		      		<button type="button" class="btn btn-outline-dark" data-dismiss="modal" aria-lavel="Close">
+		      			<span class="glyphicon glyphicon-remove-sign"></span>
+		      			Não, Cancelar.
+		      		</button>
+		      	</form>
+		      </div>      
+		    </div>
+		  </div>
+		</div>
+
+		<div>
+			<!-- Se colocar class="table", a tabela expande; senão, retrai -->
+			<table class="table table-sm table-hover table-striped" id="data_table">
+				<thead style="background-color: black; color: white;;" class="table text-center">
+					<?php
+						//Imprimindo os títulos
+						echo '<tr>';
+						foreach ($table_titles as $key => $value) {
+							echo '<th>',$value,'</th>';
+						}
+					?>
+					<th> Ações </th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<?php
+						foreach ($table_content as $key => $value) {
+							echo '<tr>';
+							foreach ($table_titles as $k => $v) {		
+								echo '<td>',$value[$k],'</td>';
+							}
+							
+							echo '<td class="td_acoes">';
+
+							if(isset($score) && $score == true){
+								echo '<a href="'.$score_destiny.'&filter='.($value[$filter]).'" title="Pontuar cliente" class="btn btn-primary btn-xs">';
+									//echo '<i class='fas fa-user-check'></i>';
+									echo "<i class='fas fa-user-check'></i>";
+								echo '</a>&nbsp;';
+							}
+							
+							if(isset($update) && $update == true){
+								echo '<a href="'.$update_destiny.'?filter='.($value[$filter]).'" title="'.$sub_edit.'" class="btn btn-warning btn-xs">';
+								echo '<i class="'.$icon_edit.'"></i>';
+								echo '</a>&nbsp;'; 
+							}
+
+							//if(@$value['id_user'] != @$user->id_user){
+								if(isset($delete) && $delete == true){
+									echo '<a href="#apagarCampo" class="btn btn-danger btn-xs" data-toggle="modal" id="tooltip" title="'.$sub_del.'" onclick="delete_reg(\'',$value[$filter],'\');">';
+									echo '<i class="'.$icon_del.'"></i>';
+									echo '</a> ';
+								}
+							//}
+
+							if(isset($print) && $print == true){
+								echo '<a href="/models/print.php?&filter='.base64_encode($value[$filter]).'" target="_BLANK" class="btn btn-primary btn-xs">';
+									echo '<i class="fa fa-print"></i>';
+								echo '</a>&nbsp;';
+							}
+
+							if(isset($block) && $block == true){
+								echo '<a href="/models/block.php?&filter='.base64_encode($value[$filter]).'" target="_BLANK" class="btn btn-warning btn-xs">';
+									echo '<i class="fa fa-ban"></i>';
+								echo '</a>&nbsp;';
+							}
+
+							echo '</td>';
+							echo '</tr>';
+						}
+					?>
+				</tbody>
+			</table>	
+		</div>
+<?php
+	} 
+?>
