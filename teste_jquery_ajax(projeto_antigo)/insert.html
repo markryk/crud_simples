@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Formulecs</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="js/jquery-1.2.6.pack.js"></script>
+	<script type="text/javascript" src="js/jquery.maskedinput-1.1.4.pack.js"/></script>
+</head>
+<body>
+	<form method="POST" action="send.php">
+		<label for="nome">Nome</label><br>
+		<input type="text" name="nome" id="nome" required><br><br>
+		<label for="cpf">CPF</label><br>
+		<input type="text" name="cpf" id="cpf" required><br><br>
+		<button class="button">Cadastrar no banco</button>
+	</form>
+	<br><hr><br>
+	<nav>
+		<!--<br><a href="buscarjs.php" type="button" role="button">Buscar no banco</a>-->
+		<a href="index.php">Voltar para início</a>
+	</nav>
+</body>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#cpf").mask("999.999.999-99");
+		});
+	</script>
+</html>

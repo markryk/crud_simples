@@ -1,0 +1,54 @@
+body {
+	background: #6C7A89;
+}
+
+/*th, td {
+    border: 1px solid;
+}*/
+
+nav {
+	text-align: center;
+	/*background: blue;*/
+	/*margin: 20px 0;*/
+	/*padding: 10px;*/
+}
+
+nav a {
+	text-decoration: none;
+	background: #000000;
+	border-radius: 5px;
+	color: white;
+	padding: 10px;
+	text-transform: uppercase;
+	width: 50px;
+	height: 50px;
+}
+
+
+/*table {
+	border: solid 1px black;
+}*/
+
+.button, a.button {
+	-webkit-appearance: button;
+	/*appearance: button;*/
+	text-decoration: none;
+	color: initial;
+	margin: 5px;
+	padding: 5px;
+	border: 1px solid black;
+	border-radius: 5px;
+	background-color: white;
+	color: #000000;
+}
+table, th, tr, td {
+	border-collapse: collapse;
+	border: 1px solid;
+	margin: 5px;
+	padding: 5px;
+}
+thead {
+	text-align: center;
+	/*background-color: #4CAF50;*/
+	font-weight: bold;
+}
